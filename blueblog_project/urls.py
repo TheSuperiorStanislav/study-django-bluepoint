@@ -25,6 +25,9 @@ from blog.views import (
     BlogPostDetailView, 
     NewBlogPostView,
     UpdateBlogPostView, 
+    ShareBlogPostView,
+    SharePostWithBlog,
+    StopShareingPostWithBlog,
 )
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -37,4 +40,7 @@ urlpatterns = [
     path('blog/post/<int:pk>/', BlogPostDetailView.as_view(), name = 'blog_post_details'),
     path('blog/post/new/', NewBlogPostView.as_view(), name = 'new_blog_post'),
     path('blog/post/<int:pk>/update/', UpdateBlogPostView.as_view(), name = 'update_blog_post'),
+    path('blog/post/<int:pk>/share/', ShareBlogPostView.as_view(), name = 'share_blog_post'),
+    path('blog/post/<int:post_pk>/share/to/<int:blog_pk>/', SharePostWithBlog.as_view(), name = 'share_post_with_blog'),
+    path('blog/post/<int:post_pk>/stop/share/to/<int:blog_pk>/', StopShareingPostWithBlog.as_view(), name = 'stop_sharing_post_with_blog'),
 ]

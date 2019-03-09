@@ -16,6 +16,7 @@ class BlogPost(models.Model):
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
     title = models.CharField(max_length = 500)
     body = models.TextField(default='')
+    shared_to = models.ManyToManyField(Blog,related_name='shared_posts')
 
     is_published = models.BooleanField(default=False)
 
