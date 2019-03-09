@@ -9,10 +9,18 @@ class Blog(models.Model):
 
     slug = models.CharField(max_length = 500, editable = False)
 
+    def __str__(self):
+        return self.title
+
 class BlogPost(models.Model):
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
     title = models.CharField(max_length = 500)
+    body = models.TextField(default='')
 
     is_published = models.BooleanField(default=False)
 
     slug = models.CharField(max_length = 500, editable = False)
+
+    def __str__(self):
+        return self.title
+    

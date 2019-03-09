@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block logged_in_nav %}
+    {% if not has_blog %}
+        <li><a href="{% url 'new_blog' %}">Create new post</a></li>
+    {% else %}
+        <li><a href="{% url 'new_blog_post' %}">Create New Blog Post</a></li>
+        <li><a href="{% url 'update_blog' blog.pk %}">Edit Blog "{{blog.title}}" Settings</a></li>
+    {% endif %}
+{% endblock %}
+{% block content %}
+    <h1>Blog Posts</h1>
+    {% for post in blog_post %}
+        <li><a href="{% url 'blog_post_details' post.pk %}">{{post.title}}</a> | <a href="{% url 'update_blog_post' post.pk %}">Edit Post</a></li>
+    {% endfor %}
+{% endblock content %}
